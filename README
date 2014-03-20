@@ -1,0 +1,48 @@
+/**
+ * rider.js
+ * verson: 1.0 2014.3.18
+ * made by rider (xushaowei)
+ *
+ ***************** Before Use Configure in html ***********************
+ * type one total of 4 steps:
+ *    <script src="j/lib/jquery-development.js"></script> // 1
+ *    <script> // 2
+ *      // plugins's base path
+ *      var baseUrl = 'j/plugins/'; // your plugins's path
+ *    </script>
+ *    <script src="j/rider.js"></script> // 3 load rider.js
+ *    use rider.js in your js like this: // 4
+ *      rd.use('jump', function(){ $.pageJupe(8, location.href+'#') });
+ * type two total of 3 steps:
+ *    <script> // 1
+ *      var baseUrl = 'j/plugins/' // your plugins's path
+ *      ,jquerySrc = 'j/lib/jquery-development.js'; // your jquery.js's path and name
+ *    </script>
+ *    <script src="j/rider.js"></script>// 2
+ *    use rider.js in your js like this: //3
+ *      rd.ready(function() {
+ *        rd.use('jump', function(){ $.pageJupe(8, location.href+'#') });
+ *      });
+ ***************** Use Example **********************
+ *
+ * use example one: 
+ *    for only used once
+ *    rider.use(plugins, fun, fun1, ...)
+ * use example two:
+ *    for repeated use
+ *    rider.use(plugins); fun(); fun1(); ...
+ * use example three:
+ *    rider.use(['fileName', 'plugins1', 'plugins2&css'], fun1, fun2,...)
+ *
+ ***************** Params **********************
+ *
+ * @param plugins {string} js like this:'plugins1, plugins2, ...';
+ *    css like this: 'plugins1.css, plugins2.css';
+ *    js&css like this: 'plugins1&css';
+ *
+ * @param plugins {array} like ['fileName', 'plugins1', 'plugins2&css', 'plugins3.css']
+ *    if fileName != '', then rider.js will load from the folder which name is fileName
+ *
+ * @param callback {function} which rely on plugins
+ *
+**/
