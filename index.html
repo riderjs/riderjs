@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rider Js</title>
+</head>
+<body>
+  
+  <!-- script area -->
+  <script>
+    // plugins's base url
+    var baseUrl = 'j/plugins/'
+    ,jquerySrc = 'j/lib/jquery-development.js';
+  </script>
+  <script src="j/rider.js"></script>
+  <script>
+    rd.ready(function() {
+      rd.requires('jump', function(){ $.pageJupe(8, location.href+'#') });
+    });
+  </script>
+</body>
+</html>

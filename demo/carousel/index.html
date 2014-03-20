@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carousel</title>
+  <style type="text/css">
+    body {
+    color: #666;
+    font: 12px/22px Microsoft Yahei,simsun,sans-serif;
+    }
+    .prize {
+      float: left;
+      width: 340px;
+      padding: 0 20px;
+    }
+    .prize .title {
+    position: relative;
+    margin-bottom: 15px;
+    color: #FFE5B4;
+    font: 16px/30px Microsoft Yahei;
+    }
+    .prize .list {
+    width: 340px;
+    }
+    .prize .cont {
+    height: 190px;
+    overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+ <div class="prize">
+    <div class="title">
+      <span>中奖播报</span>
+      <a href="javascript:;" class="prizeBtn" id="myPrize">我的奖品</a>
+    </div>
+    <table class="list">
+      <tbody><tr>
+        <th width="33%">幸运用户</th>
+        <th width="33%">奖品</th>
+        <th width="33%">中奖时间</th>
+      </tr>
+    </tbody></table>
+      <div class="cont" data-toggle="carousel">
+        <table class="list" style="margin-top: -96px;">
+          <tbody><tr>
+            <td width="33%"><div class="name textOverflow">用户名</div></td>
+            <td width="33%" class="time">2014-04-25</td>
+            <td width="33%">10000两银子</td>
+          </tr>
+          <tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr>
+          <tr>
+            <td><div class="name textOverflow">用户名用户名用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr>
+          <tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr>
+          <tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr>
+          <tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr><tr>
+            <td width="33%"><div class="name textOverflow">用户名</div></td>
+            <td width="33%" class="time">2014-04-25</td>
+            <td width="33%">10000两银子</td>
+          </tr><tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr><tr>
+            <td><div class="name textOverflow">用户名用户名用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr><tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr><tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr><tr>
+            <td><div class="name textOverflow">用户名</div></td>
+            <td class="time">2014-04-25</td>
+            <td>10000两银子</td>
+          </tr>
+        </tbody></table>
+      </div>
+    </div>
+  <script>
+    var baseUrl = '../../j/plugins/',
+    jquerySrc = '../../j/lib/jquery-1.9.1.min.js';
+  </script>
+  <script src="../../j/rider.js"></script>
+  <script>
+    rd.ready(function() {
+      rider.use('carousel', function() {
+        $('[data-toggle=carousel]').carousel({bSetInterval: true, limit: 5});
+      });
+    });
+  </script>
+</body>
+</html>

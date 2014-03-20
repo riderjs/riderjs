@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>地址</title>
+  <style>
+    #pca{
+      width: auto!important;
+    }
+  </style>
+</head>
+<body>
+  <div id="pca"></div>
+  <script>
+    var baseUrl = '../../j/plugins/',
+    jquerySrc = '../../j/lib/jquery-1.9.1.min.js';
+  </script>
+  <script src="../../j/rider.js"></script>
+  <script>
+    rd.ready(function() {
+      rider.use('pca', function() {
+        $('#pca').pca({valueType:'id', province: 120000, city: 0, area: 0 });
+      });
+    });
+  </script>
+</body>
+</html>

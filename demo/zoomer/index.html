@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zoomer</title>
+</head>
+<body>
+  <div class="showimg">
+    <div id="bigimg" class="bigimg">
+        <a href="i/10_b.jpg"><img src="i/10_b.jpg" id="leftImg" title="bigimg" /></a>
+        <div id="drag"><!--放大镜图标--></div>
+    </div>
+
+    <div class="bigpic" id="bigpic"><img id='box'src="i/10_b.jpg"></div>
+    
+    <!-- <div class="litimg">
+      <a class="hover_a" href="#"><span><b></b></span><img src="i/10_b.jpg" /><u></u></a>
+      <a href="#"><span><b></b></span><img src="images/upload/p19_04.gif" /><u></u></a>
+      <a href="#"><span><b></b></span><img src="images/upload/index_17.jpg" /><u></u></a>
+    </div> -->
+  </div>
+  <script>
+    var baseUrl = '../../j/plugins/',
+    jquerySrc = '../../j/lib/jquery-1.9.1.min.js';
+  </script>
+  <script src="../../j/rider.js"></script>
+  <script>
+    rd.ready(function() {
+      rider.use('zoomer', function() {
+        /*初始化插件*/
+        $().zoomer({
+          pic:$('#bigimg'),
+          bigpic:$('#bigpic'),
+          box:$('#box'),
+          drag:$('#drag'),
+          leftImg:$('#leftImg')
+        });    
+        /*点击小图片切换大图片*/
+        $('.litimg a').click(function(){
+            var litsrc = $(this).children('img').attr('src');
+            $('.showimg #bigimg #leftImg').attr('src',litsrc);
+            $('.showimg .bigpic #box').attr('src',litsrc);
+        });
+      });
+    });
+  </script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
