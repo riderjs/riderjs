@@ -2,7 +2,11 @@
  * rider.js
  * verson: 1.0 2014.3.18
  * made by rider (xushaowei)
- *
+ ***************** Advantages of riderjs ******************************
+ * Unified jquery plug-in interface (统一jquery插件接口)
+ * Much less tag in html (减少html里script css的导入标签) 
+ * load on demand like node requires (按需载入插件)
+ * Reasonable resource load sequence (合理的资源载入顺序)
  ***************** Before Use Configure in html ***********************
  * type one total of 4 steps:
  *    <script src="j/lib/jquery-development.js"></script> // 1
