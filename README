@@ -12,7 +12,8 @@
  *    </script>
  *    <script src="j/rider.js"></script> // 3 load rider.js
  *    use rider.js in your js like this: // 4
- *      rd.use('jump', function(){ $.pageJupe(8, location.href+'#') });
+ *      rd.use('jump', callback) or
+ *      requires('jump'); callback();
  * type two total of 3 steps:
  *    <script> // 1
  *      var baseUrl = 'j/plugins/' // your plugins's path
@@ -21,18 +22,19 @@
  *    <script src="j/rider.js"></script>// 2
  *    use rider.js in your js like this: //3
  *      rd.ready(function() {
- *        rd.use('jump', function(){ $.pageJupe(8, location.href+'#') });
+ *        rd.use('jump', callback) or
+ *        requires('jump'); callback();
  *      });
  ***************** Use Example **********************
  *
  * use example one: 
  *    for only used once
- *    rider.use(plugins, fun, fun1, ...)
+ *    rd.use(plugins, fun, fun1, ...)
  * use example two:
  *    for repeated use
- *    rider.use(plugins); fun(); fun1(); ...
+ *    requires(plugins); fun(); fun1(); ...
  * use example three:
- *    rider.use(['fileName', 'plugins1', 'plugins2&css'], fun1, fun2,...)
+ *    rd.use(['fileName', 'plugins1', 'plugins2&css'], fun1, fun2,...)
  *
  ***************** Params **********************
  *
