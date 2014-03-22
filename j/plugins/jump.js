@@ -5,9 +5,9 @@
 **/
 $(function () {
   $.extend({
-    pageJupe: function (tim, url) {
+    pageJupe: function (tim, url, str) {
       //创建节点
-      var di = $("<div  style='width:200px; height:100px; background-color:#dbd2d2;text-align:center;line-height:80px; position:absolute; top:45%; left:45%;'><p>页面将在<span id='time' style='color:red;font-size:25px;'>" + tim + "</span>秒后自动跳转</p></div>");
+      var di = $("<div  style='width:auto; height:100px; background-color:#dbd2d2;text-align:center;line-height:80px; position:absolute; top:45%; left:45%;'><p>页面将在<span id='time' style='color:red;font-size:25px;'>" + tim + "</span>秒后自动跳转"+ str +"</p></div>");
       $('body').append(di);
       var ding = setInterval(function () {
         tim--;

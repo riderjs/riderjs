@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>抢话费斗地主玩家调查卷</title>
+    <meta charset="utf-8">
+	  <meta content="width=device-width,user-scalable=no" name="viewport">
+    <style type="text/css">
+      <!--
+      body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, form, input, button, textarea, p, th, td{margin: 0;padding: 0;border:0;}
+      li {list-style: none;}
+      input, button, textarea, select, optgroup, option {font: inherit;}
+      input {text-align: inherit;}
+      textarea {resize: none;}
+      body{font-size: 16px;color: #000;font-family: "Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;}
+      .header{background:#E8470B url(images/logo.png) no-repeat 10px center;padding:5px 10px;color:#fff;text-align:center;height:40px;line-height:40px;}
+      .content{padding:15px 15px 60px;}
+      .content h2{font-size:18px;margin-bottom:10px;font-weight:normal;}
+      .content p{padding:4px 0 4px 30px;color:#666;}
+      .content label{cursor:pointer;display:block;}
+      .content .text{border:1px solid #ccc;padding:5px;}
+      .footer{font-size:16px;color:#666;line-height:15px;text-align:center;position:fixed;bottom:0px;width:100%;background:#f6d6ca;height:45px;line-height:45px;}
+  	.footer a{display:block;height:45px;width:100%;color:#E8470B;text-decoration:none;}
+  	.footer a:hover{background:#E8470B;color:#fff;text-decoration:none;}
+      .success{color:#b94a48;background-color: #fff4f0;border:1px solid #E8470B;padding:10px;margin-top:20px;line-height:26px;color:#E8470B}
+      .btn{background:#e8470b;color:#fff;padding:5px 20px;cursor:pointer;}
+  	.msg{padding:10px;border:1px dashed #ea5721;color:#e8470b;font-size:14px;margin-bottom:20px;}
+      form { height: 400px;}
+      -->
+    </style>
+  </head>
+  <body>
+  <div class="header">抢话费斗地主玩家调查卷</div>
+  <div id="progressbar" style="height: 5px;"></div>
+  <div class="content">
+    <div class="success">您已经填写过一次了，您的意见对我们非常宝贵，感谢您对掼蛋网的支持！</div>
+    <div class="msg">
+      活动规则：<br />
+    	a)	玩家可在本页面填写问卷，完成后即可获得会员3天体验卡一张；<br />
+    	b)	每个玩家限填1次；<br />
+    	c)	热爱掼蛋游戏的玩家还可留下手机号，完成掼蛋小天使电话来访后，即可获得十元话费！
+  	</div>
+    <form action="index.php" method="post"></form>
+  </div>
+  <div class="footer"><a href="#">下一题</a></div>
+  <!-- script area -->
+  <script>
+    // plugins's base url
+    var baseUrl = '../../j/plugins/'
+    ,jquerySrc = '../../j/lib/jquery-1.9.1.min.js';
+  </script>
+  <script src="../../j/rider.js"></script>
+  <script>
+    var index = 0, itemIndex = 0, isChild
+    , itemInfo = [
+      {title: 'S1 请问您手机的系统是？【单选】', choose: ['安卓', 'IOS']}
+      , {title: 'S2 请问您玩手机掼蛋已经多久了？【单选】', choose: ['1-3个月', '3-6个月', '半年到一年', '一年以上']}
+      , {title: 'S3 请问您是如何知道我们这款手机掼蛋的呢？【单选】', choose: ['朋友介绍', '应用商店里看到', '掼蛋网官方介绍', '社交网络平台上介绍', '实地广告中介绍', '主动搜索得知']}
+      , {title: 'S4 请问您是从哪里下载掼蛋游戏的呢？【单选】', choose: ['掼蛋网官网', '其他途径（运营商网站，其他网站） ', '各大市场手机应用（如安卓、91手机助手、豌豆荚）', '各大电脑手机助手 （如360管家、金山管家等）', '手机中已预装好', '苹果商店']}
+      , {title: 'S5 请问您下载游戏关注的要素有哪些呢？【多选】', type: 'm', choose: ['安装包的大小', '游戏的图标', '有无广告和插件', '游戏的宣传图', '玩家的评论', '游戏品牌']}
+      , {title: 'S6 请问您是否使用过一键注册账号吗？【单选】', choose: ['是', '否']}
+      , {title: 'S7 请问您对一键注册的看法有哪些呢？【多选】', type: 'm', choose: ['是便捷的，我喜欢使用', '我喜欢正式注册的个性化账号', '我记不住我的一键注册资料', '为了方便试玩会使用一键注册，认定游戏后会转为个性化账号']}
+      , {title: 'S8 您觉得目前掼蛋游戏哪些会员功能使您比较满意呢？【多选】', type: 'm', choose: ['踢人', '会员表情', '优先进入人满房间', '逃跑扣分减半', '独特的会员标示', '以上都没有']}
+      , {title: 'S9 请问您最愿意为会员的哪些功能付费呢？【单选】', choose: ['专享的标识（头像、勋章）', '专享的特权（踢人、包房、道具、表情等）', '专享的福利（活动、折扣、优惠等）']}
+      , {title: 'S10 请问您不愿成为棋牌游戏会员的原因有哪些呢？【多选】', type: 'm', choose: ['我觉得其功能不值得为之付费', '支付流程很麻烦', '我不知道怎么付款', '我只是随便玩玩，不是资深玩家']}
+      , {title: 'S11 请问您会享受积分/等级高带来的荣誉感吗？ 【单选】'
+        , choose: ['非常享受', '比较享受', '一般', '不是很享受', '我完全不在乎'], type: 3
+        , child: [{
+          title: 'S11a 请问您为什么会享受积分/等级带来的荣誉感呢？【多选】', type: 'm'
+          , choose: ['我喜欢在我朋友圈里炫耀', '能显示出我的游戏水平', '我可以选择和我同水平的玩家一起游戏', '积分高有时可以参加高级别的线上活动']
+        }
+        , {
+          title: 'S11b 请问您为什么不享受积分/等级带来的荣誉感呢？【多选】', type: 'm'
+          , choose: ['我对游戏本身不是很感兴趣', '积分高低在游戏中差别不大', '我没有固定使用的游戏账号', '我不在乎输赢，棋牌只是娱乐']
+        }]}
+      , {title: 'S12 请问您什么样的道具会吸引您呢？【多选】', type: 'm', choose: ['游戏中有人对我使用过', '能增加游戏的娱乐性', '有利于我牌技的发挥', '让我有荣誉感', '我的朋友圈都在用', '价格优惠很划算', '为了更爽体验游戏', '以上都没有']}
+      , {title: 'S13 请问您对以下哪些新道具的感兴趣？ 【多选】', type: 'm', choose: ['计牌器', '队友智能匹配', '每局牌技评分', '荣誉勋章', '个性头像', '连胜道具及排行', '智能分享', '掼蛋游戏轨迹展示', '以上都没有']}
+      , {title: 'S14 请问您在金蛋场游戏过吗？ 【单选】', type: 1
+        , choose: ['是', '否']
+        , child: [{
+          title: 'S14a 请问您对金蛋房的看法是怎么样的？【多选】', type: 'm'
+          , choose: ['奖励很好，我是为了抽奖来的', '金蛋房很爽，更能体现我的牌技', '不够刺激，输赢不够大', '房间设置太少，多开几种']
+        }
+        , {
+          title: 'S14b 请问您为什么没有在金蛋房游戏？【多选】', type: 'm'
+          , choose: ['我不理解金蛋场的意思', '我习惯在其他房间游戏', '我了解金蛋场，但不吸引我']
+        }]}
+      , {title: 'S15 请问您购买过金蛋荷包吗？【单选】（S14选择是的回答）', type: 1, rely: 1
+        , choose: ['否', '是']
+        , child: [{
+          title: 'S15a 请问您为什么没买过金蛋荷包呢？ 【多选】', type: 'm'
+          , choose: ['我技术好一直赢，不缺金蛋', '随便打打，没有金蛋就换房间', '低保够用，每天只玩几把']
+        }]}
+      , {title: 'S16 请问您不知道如何使用的功能有哪些？【多选】', type: 'm', choose: ['选中牌向上拉可出牌', '滑动连续选牌', '点击空白处重选', '选中牌可理', '摇一摇过牌', '金蛋房收集话费点兑换话', '线上活动或比赛报名', '自建包厢房游戏', '绑定手机号', '话费点兑换及奖励情况查询', '活动比赛的参与和报名', '以上都没有']}
+      , {title: 'S17 请问您在游戏过程中，什么情况会使您逃跑呢？【多选】', type: 'm', choose: ['对家牌技差', '出牌慢', '对家托管', '有事情，必须要逃跑', '觉得牌不好玩不下去了', '网络原因造成的被动逃跑']}
+      , {title: 'S18请问您最无法忍受的情况是什么？最多选3项。【多选】', type: 'm', choose: ['网络断线', '服务器升级等带来的无法游戏的情况', '断线后无法重连', '程序闪退', '签到失败', '计分异常', '游戏房间内卡桌', '版本无法升级', '任务局数累计异常', '抽奖、发奖失败或提示报错']}
+      , {title: 'S19 请问您最近一年参加过掼蛋的哪些活动？【多选】', type: 'm', choose: ['中秋抽奖活动', '十一抽奖活动', '爱心掼蛋大赛活动', '新春马上有PAD活动', '以上都没有']}
+      , {title: 'S20 请问您喜欢什么类型的活动呢？【多选】', type: 'm', choose: ['活动排行榜类', '准点赛事类', '分享达人类', '游戏后抽奖类', '连胜抽奖/分享类', '玩家牌技交流类']}
+      , {title: 'S21 请问您喜欢怎么样的棋牌游戏？【多选】', type: 'm', choose: ['休闲娱乐，不在乎输赢', '以小博大，考验牌技', '传统棋牌上有新的规则玩法', '可以和好友互动', '界面美观', '棋牌之外附有收集欲望、成长性和成就感', '操作顺手，网络流畅，没有广告', '对手匹配，玩家众多且优质']}
+      , {title: 'S22 请问您觉得掼蛋游戏中，最满意的3个部分是什么？', choose: ['评分要素', '界面美观程度', '游戏流畅程度', '扣分的设置', '会员与道具的功能', '游戏的房间设置', '游戏中出牌速度', '日常活动']}
+    ]
+    function getEffect() {
+      var effectAll = [
+        'blind', 'clip', 'drop', 'explode', 'fade', 'puff'
+      ];
+      var r = parseInt(Math.random()*effectAll.length);
+      return effectAll[r];
+    }
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      var selectedEffect = getEffect();
+      // most effect types need no options passed by default
+      var options = {};
+ 
+      // run the effect
+      $form.find(".item:eq("+ (index++) +")").effect( selectedEffect, options, 200, appendItem );
+    };
+    // callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $form.find(".item:eq("+ index +")").removeAttr( "style" ).hide().fadeIn();
+      }, 300 );
+    };
+    function changeNum(num) {
+      switch(num) {
+        case 0: return 'A、';
+        case 1: return 'B、';
+        case 2: return 'C、';
+        case 3: return 'D、';
+        case 4: return 'E、';
+        case 5: return 'F、';
+        case 6: return 'G、';
+        case 7: return 'H、';
+        case 8: return 'I、';
+        case 9: return 'J、';
+        case 10: return 'K、';
+        case 11: return 'L、';
+      }
+    }
+    function appendItem() {
+      // is end
+      var html = '', item, inputType = 'radio', chooseIndex
+      , preItem = itemInfo[itemIndex-1];
+      if (preItem && preItem.child && !preItem.childComplete) {
+        chooseIndex = $form.find(".item:eq("+ (index-1) +") :checked").parents("p").index();
+        if ( chooseIndex <= itemInfo[itemIndex-1].type) {
+          item = itemInfo[itemIndex-1].child[0];
+          isChild = true;
+        } else if ( itemInfo[itemIndex-1].child[1] ) {
+          item = itemInfo[itemIndex-1].child[1];
+          isChild = true;
+        } else {
+          item = itemInfo[itemIndex];
+          isChild = false;
+        }
+      } else {
+        item = itemInfo[itemIndex];
+        isChild = false;
+      }
+      if (itemIndex >= 22 || !item)  {
+        over();
+        return false;
+      }
+      // is rely on preItem
+      if (item.rely) {
+        if ( $form.find(".item:eq("+ (index-1) +") :checkbox") )
+          chooseIndex = $form.find(".item:eq("+ (index-2) +") :checked").parents("p").index();
+        else
+          chooseIndex = $form.find(".item:eq("+ (index-1) +") :checked").parents("p").index();
+        if ( chooseIndex !== item.rely) {
+          item = itemInfo[++itemIndex];
+        }
+      }
+      // is checkbox
+      if ( item.type === 'm') inputType = 'checkbox';
+
+      html +=
+      '<div class="item" style="display:none" index="'+ index +'">'
+        + '<h2>'+ item.title +'</h2>';
+        for (var i = 0, l = item.choose.length; i < l; i++)
+          html += '<p><label><input type="'+ inputType +'" name="'+ index +'" value="" />'+ changeNum(i) + item.choose[i] +'</label></p>';
+      html += 
+      '</div>';
+      $form.append(html);
+      callback();
+    }
+    function over() {
+      var h = '';
+      h += 
+        '<div class="item" style="display:none" index="' + index +'">'
+          + '<h2>我要报名电话来访</h2>'
+          + '<p><input type="text" name="cellphone" class="text" /></p>'
+          + '<p><input type="submit" value="提交" class="btn" /></p>'
+      + '</div>'
+      + '<div class="success">恭喜您已经获得会员（3天）体验卡一张！您的意见对我们非常重要！感谢您的支持！</div>';
+      $form.append(h);
+      callback();
+    }
+    rd.ready(function() {
+      requires('jquery-ui-1.10.4.custom&css');
+      window.$form = $( "form" ), window.$progressbar = $( "#progressbar" );
+      $progressbar.progressbar({
+        value: 0/22
+      });
+      appendItem();
+      $( ".footer" ).on('click', function() {
+        if ( $form.find(".item:eq("+ index +") :checked").length > 0 ) {
+          if (isChild)  itemInfo[itemIndex-1].childComplete = true;
+          else  itemInfo[itemIndex++].complete = true;
+        }
+        runEffect();
+        $progressbar.progressbar({
+          value: Math.ceil( itemIndex/22*100 )
+        })
+        return false;
+      })
+    });
+  </script>
+  </body>
+</html>

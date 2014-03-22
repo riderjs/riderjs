@@ -5,7 +5,58 @@
   <title>Rider Js</title>
 </head>
 <body>
-  
+  <pre>
+    /**
+     * rider.js
+     * verson: 1.0 2014.3.18
+     * made by rider (xushaowei)
+     *
+     ***************** Before Use Configure in html ***********************
+     * type one total of 4 steps:
+     *    &lt;script src="j/lib/jquery-development.js"&gt;&lt;/script&gt; // 1
+     *    &lt;script&gt; // 2
+     *      // plugins's base path
+     *      var baseUrl = 'j/plugins/'; // your plugins's path
+     *    &lt;/script&gt;
+     *    &lt;script src="j/rider.js"&gt;&lt;/script&gt; // 3 load rider.js
+     *    use rider.js in your js like this: // 4
+     *      rd.use('jump', callback) or
+     *      requires('jump'); callback();
+     * type two total of 3 steps:
+     *    &lt;script&gt; // 1
+     *      var baseUrl = 'j/plugins/' // your plugins's path
+     *      ,jquerySrc = 'j/lib/jquery-development.js'; // your jquery.js's path and name
+     *    &lt;/script&gt;
+     *    &lt;script src="j/rider.js"&gt;&lt;/script&gt;// 2
+     *    use rider.js in your js like this: //3
+     *      rd.ready(function() {
+     *        rd.use('jump', callback) or
+     *        requires('jump'); callback();
+     *      });
+     ***************** Use Example **********************
+     *
+     * use example one: 
+     *    for only used once
+     *    rd.use(plugins, fun, fun1, ...)
+     * use example two:
+     *    for repeated use
+     *    requires(plugins); fun(); fun1(); ...
+     * use example three:
+     *    rd.use(['fileName', 'plugins1', 'plugins2&css'], fun1, fun2,...)
+     *
+     ***************** Params **********************
+     *
+     * @param plugins {string} js like this:'plugins1, plugins2, ...';
+     *    css like this: 'plugins1.css, plugins2.css';
+     *    js&css like this: 'plugins1&css';
+     *
+     * @param plugins {array} like ['fileName', 'plugins1', 'plugins2&css', 'plugins3.css']
+     *    if fileName != '', then rider.js will load from the folder which name is fileName
+     *
+     * @param callback {function} which rely on plugins
+     *
+    **/
+  </pre>  
   <!-- script area -->
   <script>
     // plugins's base url
@@ -14,8 +65,9 @@
   </script>
   <script src="j/rider.js"></script>
   <script>
+    var jump = function() {location.href = "demo/";}
     rd.ready(function() {
-      rd.requires('jump', function(){ $.pageJupe(8, location.href+'#') });
+      requires('jump', function(){ $.pageJupe(20, 'demo/', '至demo<input type="submit" value="点击跳转" onclick="jump();"/>') });
     });
   </script>
 </body>
